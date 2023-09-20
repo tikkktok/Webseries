@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banana Web</title>
+   <style>
+       
+      .awesome-button {
+  width: 100%;
+  height: 50px;
+  background-color: #007bff; /* Change this to your desired background color */
+  color: #fff; /* Change this to your desired text color */
+  border: none;
+  border-radius: 5px; /* Adjust the border-radius to your liking */
+  font-size: 18px; /* Adjust the font size to your liking */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Add a smooth hover effect */
+}
+
+.awesome-button:hover {
+  background-color: #0056b3; /* Change this to your desired hover color */
+}
+ 
+       
+   </style> 
+    
+</head>
+<body>
+    <div id="browser">
+        
+        <button id="backButton" onclick="goBack()" class="awesome-button">Back</button>
+        <iframe id="iframe" src="" width="100%" height="670px"></iframe>
+    </div>
+    
+    <script >
+        
+       
+        const iframe = document.getElementById("iframe");
+const backButton = document.getElementById("backButton");
+
+let historyStack = [];
+
+function goBack() {
+    if (historyStack.length > 0) {
+        const previousURL = historyStack.pop();
+        iframe.src = previousURL;
+    }
+}
+
+iframe.onload = function () {
+    historyStack.push(iframe.src);
+};
+
+// You can populate the iframe with a default website, for example:
+iframe.src = "https://webxseries.com/bikau-episode-2-c4/";
+
+        
+    </script>
+</body>
+</html>
